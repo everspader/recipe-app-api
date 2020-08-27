@@ -2,4 +2,4 @@ Django
 djangorestframework
 django-environ
 
-flake8>=3.6.0,<3.7.0
+flake8==3.8.3
