@@ -1,5 +1,6 @@
 Django
 djangorestframework
 django-environ
+psycopg2
 
 flake8==3.8.3
