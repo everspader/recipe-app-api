@@ -12,6 +12,7 @@ CREATE_USER_URL = reverse('user:create')
 def create_user(**params):
     return get_user_model().objects.create_user(**params)
 
+
 class PublicUsersApiTest(TestCase):
     """
     Test the users API public.
@@ -38,7 +39,8 @@ class PublicUsersApiTest(TestCase):
 
     def test_user_exists(self):
         """Test creating user that already exists fails"""
-        payload = {'email': 'test@emailprovider.com', 'password': 'testpassword'}
+        payload = {'email': 'test@emailprovider.com',
+                   'password': 'testpassword'}
         create_user(**payload)
 
         res = self.client.post(CREATE_USER_URL, payload)
