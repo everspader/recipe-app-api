@@ -45,6 +45,13 @@ class RecipeViewSet(viewsets.ModelViewSet):
         """Retrieve the recipes for the authenticated user"""
         return self.queryset.filter(user=self.request.user)
 
+    def get_serializer_class(self):
+        """Return appropriate serializer class"""
+        if self.action == 'retrieve':
+            return serializers.RecipeDetailSerializer
+
+        return self.serializer_class
+
 # The classes above are a refactor of the classes below.
 # The code is kept here as a comment for a comparison even though
 # it could be retrieved from source control.
