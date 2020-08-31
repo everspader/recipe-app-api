@@ -30,7 +30,7 @@ class PrivateIngredientsApiTest(TestCase):
     """Test the private ingredients API"""
 
     def setUp(self):
-        self.client = APICLient()
+        self.client = APIClient()
         self.user = get_user_model().objects.create_user(
             'test@emailprovider.com',
             'testpassword'
@@ -39,8 +39,8 @@ class PrivateIngredientsApiTest(TestCase):
 
     def test_retrieve_ingredients_list(self):
         """Test retrieving a list of ingredients"""
-        Ingredient.ojbects.create(user=self.user, name='Kale')
-        Ingredient.ojbects.create(user=self.user, name='salt')
+        Ingredient.objects.create(user=self.user, name='Kale')
+        Ingredient.objects.create(user=self.user, name='salt')
 
         res = self.client.get(INGREDIENTS_URL)
 
@@ -53,7 +53,7 @@ class PrivateIngredientsApiTest(TestCase):
     def test_ingredients_limited_to_user(self):
         """Test that ingredients for the authenticated user are returned"""
         user2 = get_user_model().objects.create_user(
-            'test@emailprovider.com',
+            'other@emailprovider.com',
             'testpassword'
         )
         Ingredient.objects.create(user=user2, name='Vinegar')
