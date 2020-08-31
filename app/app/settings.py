@@ -135,6 +135,13 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+# 127.0.0.1:800/media/
+
+# Where all the media files are dumped when the project is built
+MEDIA_ROOT = '/vol/web/media'
+# Where all the static files are dumped when the project is built
+STATIC_ROOT = '/vol/web/static'
 
 # app.model that is used for user authentication
 AUTH_USER_MODEL = 'core.user'

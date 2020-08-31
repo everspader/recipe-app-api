@@ -2,5 +2,6 @@ Django
 djangorestframework
 django-environ
 psycopg2
+Pillow>=5.30<=5.4.0
 
 flake8==3.8.3
