@@ -27,6 +27,7 @@ class UserSerializer(serializers.ModelSerializer):
         return user
 
 
+# pylint: disable=W0223
 class AuthTokenSerializer(serializers.Serializer):
     """Serializer for the user authentication object"""
     email = serializers.CharField()
