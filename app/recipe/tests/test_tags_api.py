@@ -18,8 +18,8 @@ class PublicTagsApiTest(TestCase):
     def setUp(self):
         self.client = APIClient()
 
-    def test_login_requires(self):
-        """Test tha tlogin is required for retrieving tags"""
+    def test_login_required(self):
+        """Test that login is required for retrieving tags"""
         res = self.client.get(TAGS_URL)
 
         self.assertEqual(res.status_code, status.HTTP_401_UNAUTHORIZED)
@@ -34,12 +34,12 @@ class PrivateTagsApiTest(TestCase):
             'testpassword'
         )
         self.client = APIClient()
-        self.client.force_authentication = self.user
+        self.client.force_authenticate(self.user)
 
     def test_retrieve_tags(self):
         """Test retrieving tags"""
-        Tag.objects.create(user=self.user, name='vegan')
-        Tag.objects.create(user=self.user, name='dessert')
+        Tag.objects.create(user=self.user, name='Vegan')
+        Tag.objects.create(user=self.user, name='Dessert')
 
         res = self.client.get(TAGS_URL)
 
