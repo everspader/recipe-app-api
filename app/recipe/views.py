@@ -52,6 +52,10 @@ class RecipeViewSet(viewsets.ModelViewSet):
 
         return self.serializer_class
 
+    def perform_create(self, serialzier):
+        """Create a new recipe"""
+        serialzier.save(user=self.request.user)
+
 # The classes above are a refactor of the classes below.
 # The code is kept here as a comment for a comparison even though
 # it could be retrieved from source control.
