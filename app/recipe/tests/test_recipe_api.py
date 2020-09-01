@@ -262,7 +262,6 @@ class PrivateRecipeApiTest(TestCase):
         self.assertNotIn(serializer3.data, res.data)
 
 
-
 class RecipeImageUploadTests(TestCase):
 
     def setUp(self):

@@ -106,22 +106,22 @@ class PrivateIngredientsApiTest(TestCase):
 
     def test_retrieve_ingredients_assigned_unique(self):
         """Test filtering ingredients by assigned returns unique items"""
-        ingredient1 = Ingredient.objects.create(user=self.user, name='Eggs')
-        ingredient2 = Ingredient.objects.create(user=self.user, name='Cheese')
+        ingredient = Ingredient.objects.create(user=self.user, name='Eggs')
+        Ingredient.objects.create(user=self.user, name='Cheese')
         recipe1 = Recipe.objects.create(
             title='Eggs Benedict',
             time_minutes=12,
             price=1.50,
             user=self.user
         )
-        recipe1.ingredients.add(ingredient1)
+        recipe1.ingredients.add(ingredient)
         recipe2 = Recipe.objects.create(
-            name='Coriander eggs on toast',
+            title='Coriander eggs on toast',
             time_minutes=7,
             price=4.00,
             user=self.user
         )
-        recipe2.ingredients.add(ingredient2)
+        recipe2.ingredients.add(ingredient)
 
         res = self.client.get(INGREDIENTS_URL, {'assigned_only': 1})
 
